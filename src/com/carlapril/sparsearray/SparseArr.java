@@ -13,7 +13,7 @@ import java.util.Iterator;
 public class SparseArr {
     public static void main(String[] args) {
         //创建数组 11*11 0表示没有子，1，2表示双方子。
-        int chaseArr[][] = new int[11][11];
+        int[][] chaseArr = new int[11][11];
         chaseArr[1][2] = 1;
         chaseArr[2][3] = 2;
         //  输出一下数组
@@ -35,7 +35,7 @@ public class SparseArr {
             }
         }
         System.out.println("sum = " + sum);
-        int sparseArr[][] = new int[sum + 1][3];
+        int[][] sparseArr = new int[sum + 1][3];
         //给稀疏数组赋值
         sparseArr[0][0] = 11;
         sparseArr[0][1] = 11;
@@ -63,7 +63,7 @@ public class SparseArr {
         }
         //将稀疏数组再转回原始二维数组
         //先读取第一行数据
-        int chessArr1[][] = new int[sparseArr[0][0]][sparseArr[0][1]];
+        int[][] chessArr1 = new int[sparseArr[0][0]][sparseArr[0][1]];
         for (int i = 1; i < sparseArr.length; i++) {
             chessArr1[sparseArr[i][0]][sparseArr[i][1]] = sparseArr[i][2];
         }
