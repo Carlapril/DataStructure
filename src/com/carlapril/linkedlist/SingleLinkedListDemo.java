@@ -34,10 +34,32 @@ public class SingleLinkedListDemo {
         System.out.println();
         singleLinkedList.list();
         System.out.println(getLength(singleLinkedList.getHead()));
+        //测试取倒是第n个节点
+        HeroNode hero = findLastIndexNode(singleLinkedList.getHead(),1);
+        System.out.println("hero = " + hero);
 
 
+    }
+    //返回倒数第K个节点
+    public static HeroNode findLastIndexNode(HeroNode head,int index){
+        if (head.next==null){
+            return null;
+        }
+        //得到链表的长度
+        int size = getLength(head);
+        //首先考虑数据的合理性
+        if (index<=0||index>size){
+            System.out.println("输入的数据不合理");
+            return null;
+        }
+        HeroNode temp = head.next;
+        for (int i = 0; i < size - index; i++) {
+            temp = temp.next;
+        }
+        return temp;
+    }
 
-    }//獲取单链表的节点个数
+    //獲取单链表的节点个数
     public static int getLength(HeroNode head){
         int length = 0;
         HeroNode temp = head.next;
