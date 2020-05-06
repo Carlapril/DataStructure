@@ -1,5 +1,10 @@
 package com.carlapril.linkedlist;
 
+import java.awt.*;
+import java.security.PublicKey;
+import java.util.Arrays;
+import java.util.concurrent.CountDownLatch;
+
 /**
  * @author carlapril
  * @create 2020-05-04 14:40
@@ -28,10 +33,25 @@ public class SingleLinkedListDemo {
         singleLinkedList.delete(3);
         System.out.println();
         singleLinkedList.list();
+        System.out.println(getLength(singleLinkedList.getHead()));
 
 
 
+    }//獲取单链表的节点个数
+    public static int getLength(HeroNode head){
+        int length = 0;
+        HeroNode temp = head.next;
+        if (head.next == null) {
+            return 0;
+        }
+        while (temp!= null){
+            length++;
+            temp=temp.next;
+        }
+        return length;
     }
+
+
 }
 
 //定义SingleLinkedList管理英雄
@@ -39,6 +59,10 @@ class SingleLinkedList {
     //定义一个头节点，不要动。
     private HeroNode head = new HeroNode(0, "", "");
 
+    //返回头节点的方法
+    public HeroNode getHead(){
+        return head;
+    }
     //添加节点到单向链表
     public void add(HeroNode heroNode) {
         //先用临时节点找到头，遍历
@@ -75,8 +99,9 @@ class SingleLinkedList {
             temp.next = heroNode;
         }
     }
+
     //修改英雄信息,根据提供的HeroNode的编号修改
-    public void update(HeroNode heroNode){
+    public void update(HeroNode heroNode) {
         if (head.next == null) {
             System.out.println("链表为空");
             return;
@@ -86,9 +111,9 @@ class SingleLinkedList {
         boolean flag = false;
         while (true) {
             if (temp == null) {
-               break;//到了链表的最后
+                break;//到了链表的最后
             }
-            if (temp.number  == heroNode.number) {
+            if (temp.number == heroNode.number) {
                 flag = true;
                 break;
             }
@@ -98,32 +123,33 @@ class SingleLinkedList {
             temp.name = heroNode.name;
             temp.nickName = heroNode.nickName;
             System.out.println("信息已修改");
-        }else {
+        } else {
             System.out.println("未找到传入的英雄所对应的编号，信息未修改！");
         }
 
     }
+
     //删除节点
-    public void delete(int number){
+    public void delete(int number) {
         HeroNode temp = head;
         boolean flag = false;
         if (head.next == null) {
             System.out.println("链表为空");
             return;
         }
-        while (true){
-           if (temp.next == null){
-               break;
-           }
-           if (temp.next.number == number){
-               flag = true;//证明我们找到了该编号的英雄，把flag至真
-               break;
-           }
-           temp = temp .next;
+        while (true) {
+            if (temp.next == null) {
+                break;
+            }
+            if (temp.next.number == number) {
+                flag = true;//证明我们找到了该编号的英雄，把flag至真
+                break;
+            }
+            temp = temp.next;
         }
-        if (flag){
-            temp.next =temp.next.next;
-        }else{
+        if (flag) {
+            temp.next = temp.next.next;
+        } else {
             System.out.println("输入的序号有误，请确认是否有该编号英雄！！");
         }
 
