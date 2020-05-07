@@ -36,7 +36,7 @@ public class SingleLinkedListDemo {
         System.out.println();
         singleLinkedList.list();
         System.out.println(getLength(singleLinkedList.getHead()));
-        //测试取倒是第n个节点
+        //测试取倒数第n个节点
         HeroNode hero = findLastIndexNode(singleLinkedList.getHead(), 1);
         System.out.println("hero = " + hero);
         //测试反转链表
