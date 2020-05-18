@@ -63,7 +63,7 @@ class CircleLinkedList {
 
     /**
      * @param startNo//表示从第几个小孩开始数数
-     * @param countNum              //数几次
+     * @param countNum  //数几次
      * @param numOfBoy//小孩的个数
      */
     public void countBoy(int startNo, int countNum, int numOfBoy) {
