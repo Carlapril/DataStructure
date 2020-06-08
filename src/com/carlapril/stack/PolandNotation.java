@@ -58,7 +58,7 @@ public class PolandNotation {
     public static List<String> toInfixExpressionList(String s) {
         List<String> list = new ArrayList<>();
         int i = 0;
-        String str;
+        String str;//用于拼接多位数
         char c;
         do {
             if ((c = s.charAt(i)) < 48 || (c = s.charAt(i)) > 57) {
