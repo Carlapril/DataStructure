@@ -49,19 +49,19 @@ public class Maze {
         } else {
             if (map[i][j] == 0) {
                 map[i][j] = 2;
-                if (findWay(map, i+1,j )){//向下方走
+                if (findWay(map, i + 1, j)) {//向下方走
                     return true;
-                }else if(findWay(map,i,j+1)){//向右方走
+                } else if (findWay(map, i, j + 1)) {//向右方走
                     return true;
-                }else if(findWay(map,i-1,j)){//向上方走
+                } else if (findWay(map, i - 1, j)) {//向上方走
                     return true;
-                }else if (findWay(map,i,j-1)){//向左方走
+                } else if (findWay(map, i, j - 1)) {//向左方走
                     return true;
-                }else{
-                    map[i][j]=3;
+                } else {
+                    map[i][j] = 3;
                     return false;
                 }
-            }else{//当地图上标有2，3，1时，返回false；
+            } else {//当地图上标有2，3，1时，返回false；
                 return false;
             }
         }
