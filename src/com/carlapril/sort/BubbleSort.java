@@ -1,16 +1,26 @@
 package com.carlapril.sort;
 
+import java.util.Arrays;
+
 /**
  * @author carlapril
  * @create 2020-06-11 22:29
  */
 public class BubbleSort {
     public static void main(String[] args) {
-        int[] arr = {4,10,0,17,100};
-       int[] arrs =  bubbleSort(arr);
-        for (int i = 0; i < arrs.length; i++) {
-            System.out.print(arrs[i]+" ");
+        int[] arr = new int[50000];
+        for (int i = 0; i < 50000; i++) {
+            arr[i]=(int) (Math.random()*50000);
         }
+        System.out.println("排序前：");
+        System.out.println(Arrays.toString(arr));
+       Long l1 = System.currentTimeMillis();
+       int[] arrs =  bubbleSort(arr);
+       Long l2 = System.currentTimeMillis();
+        System.out.println("排序前：");
+        System.out.println(Arrays.toString(arrs));
+        System.out.println("耗时为："+(l2-l1));
+
 
     }
     public static int[] bubbleSort(int[] arrs){
