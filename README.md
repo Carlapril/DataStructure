@@ -1,3 +1,2 @@
 # DataStructure
-Gobang
-learning for better life！
+No project too difficult，no sacrifice too great！
