@@ -10,7 +10,7 @@ public class InsertValueSearch {
         for (int i = 0; i < ints.length; i++) {
             ints[i] = i + 1;
         }
-        int index = insertValueSearch(ints,0,ints.length-1,50);
+        int index = insertValueSearch(ints,0,ints.length-1,-1);
         if (index == -1){
             System.out.println("未查询到该值，请重新输入");
         }else{
@@ -23,7 +23,7 @@ public class InsertValueSearch {
      * @param left      左下标
      * @param right     右下标
      * @param findValue 需要查找的值
-     * @return
+     * @return           查找到返回下标，否则返回-1
      */
     public static int insertValueSearch(int[] arr, int left, int right, int findValue) {
         //findValue需要判断，不判断可能数组下标越界

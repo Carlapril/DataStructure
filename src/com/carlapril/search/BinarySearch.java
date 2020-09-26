@@ -12,12 +12,10 @@ import java.util.List;
 public class BinarySearch {
     public static void main(String[] args) {
         int[] arr = {3, 5, 7, 9, 10, 999, 1000};
-        List<Integer> resultIndex = binarySearch(arr, 0, arr.length - 1, 1000);
-        if (resultIndex == null) {
-            System.out.println("未找到该数据");
-        } else {
+        List<Integer> resultIndex = binarySearch(arr, 0, arr.length - 1, 3);
+
             System.out.println("index = " + resultIndex);
-        }
+
 
     }
 
