@@ -72,7 +72,7 @@ class BinaryTree {
 
     public EmployeeNode postOrderSearch(int id) {
         if (this.root != null) {
-           return this.root.postOrderSearch(id);
+            return this.root.postOrderSearch(id);
         }
         return null;
     }
@@ -82,6 +82,17 @@ class BinaryTree {
             return this.root.infixSearch(id);
         }
         return null;
+    }
+    public void deleteNode(int id){
+        if (this.root!=null){
+            if (this.root.getId()==id){
+                this.root = null;
+            }else{
+                this.root.deleteNode(id);
+            }
+        }else{
+            System.out.println("空二叉树，无法删除");
+        }
     }
 
 }
@@ -214,7 +225,7 @@ class EmployeeNode {
         if (this.getLeft() != null) {
             resNode = this.getLeft().postOrderSearch(id);
         }
-        if (resNode != null){
+        if (resNode != null) {
             return resNode;
         }
         if (this.getRight() != null) {
@@ -224,5 +235,26 @@ class EmployeeNode {
             return this;
         }
         return resNode;
+    }
+
+    public void deleteNode(int id) {//递归删除指定节点
+        //左子节点不为空才能删除
+        if (this.getLeft() != null && this.getLeft().getId() == id) {
+            this.setLeft(null);
+            return;
+        }//右子节点不为空才能删除
+        if (this.getRight() != null && this.getRight().getId() == id) {
+            this.setRight(null);
+            return;
+        }
+        //向左递归删除
+        if (this.getLeft()!= null){
+            this.getLeft().deleteNode(id);
+        }
+        //向右递归删除
+        if (this.getRight()!= null){
+            this.getRight().deleteNode(id);
+        }
+
     }
 }
