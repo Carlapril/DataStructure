@@ -22,8 +22,13 @@ public class BinaryTreeDemo {
         employeeNode5.setRight(employeeNode6);
         binaryTree.setRoot(employeeNode);
         System.out.println("前序遍历:");
+        binaryTree.preOrder();
+        System.out.println("中序遍历：");
+        binaryTree.infix();
+        System.out.println("后序遍历：");
         binaryTree.postOrder();
-
+        EmployeeNode resNode = binaryTree.preOrderSearch(3);
+        System.out.println("resNode = " + resNode);
     }
 }
 
@@ -58,6 +63,26 @@ class BinaryTree {
         }
     }
 
+    public EmployeeNode preOrderSearch(int id) {
+        if (this.root != null) {
+            return this.root.preOrderSearch(id);
+        }
+        return null;
+    }
+
+    public EmployeeNode postOrderSearch(int id) {
+        if (this.root != null) {
+           return this.root.postOrderSearch(id);
+        }
+        return null;
+    }
+
+    public EmployeeNode infixSearch(int id) {
+        if (this.root != null) {
+            return this.root.infixSearch(id);
+        }
+        return null;
+    }
 
 }
 
@@ -147,5 +172,57 @@ class EmployeeNode {
             this.getRight().postOrder();
         }
         System.out.println(this);
+    }
+
+    //前序查找 依据id
+    public EmployeeNode preOrderSearch(int id) {
+        if (this.getId() == id) {//比较根节点
+            return this;
+        }
+        EmployeeNode resNode = null;
+        if (this.getLeft() != null) {//向左递归查找
+            resNode = this.getLeft().preOrderSearch(id);
+        }
+        if (resNode != null) {
+            return resNode;
+        }
+        if (this.getRight() != null) {//向右递归
+            resNode = this.getRight().preOrderSearch(id);
+        }
+        return resNode;
+    }
+
+    public EmployeeNode infixSearch(int id) {//按照id中序查找
+        EmployeeNode resNode = null;
+        if (this.getLeft() != null) {
+            resNode = this.getLeft().infixSearch(id);
+        }
+        if (resNode != null) {
+            return resNode;
+        }
+        if (this.getId() == id) {
+            return this;
+        }
+        if (this.getRight() != null) {
+            resNode = this.getRight().infixSearch(id);
+        }
+        return resNode;
+    }
+
+    public EmployeeNode postOrderSearch(int id) {//按照id后续查找
+        EmployeeNode resNode = null;
+        if (this.getLeft() != null) {
+            resNode = this.getLeft().postOrderSearch(id);
+        }
+        if (resNode != null){
+            return resNode;
+        }
+        if (this.getRight() != null) {
+            resNode = this.getRight().postOrderSearch(id);
+        }
+        if (this.getId() == id) {
+            return this;
+        }
+        return resNode;
     }
 }
